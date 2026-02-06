@@ -1,7 +1,7 @@
 name: 'Secure Webhook'
 description: 'Send a SHA256 digest with webhook request'
 branding:
-  icon: 'alert-octagon'  
+  icon: 'alert-octagon'
   color: 'green'
 inputs:
   url:
@@ -13,9 +13,20 @@ inputs:
   data:
     description: 'Request Body'
     required: false
+  headers:
+    description: 'Additional headers as JSON object'
+    required: false
+  timeout:
+    description: 'Request timeout in milliseconds'
+    required: false
+    default: '30000'
+  retries:
+    description: 'Number of retry attempts'
+    required: false
+    default: '3'
 outputs:
   response:
-      description: 'HTTP Response'
+    description: 'HTTP Response (JSON with status and data)'
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'dist/index.js'
