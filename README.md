@@ -8,7 +8,7 @@ Securely call webhook endpoints from GitHub Actions with HMAC-SHA256 signature v
 
 ```yaml
 - name: Webhook
-  uses: onuminc/secure-actions-webhook@0.3.0
+  uses: onuminc/secure-actions-webhook@0.1.4
   with:
     url: https://example.com/webhook
     hmacSecret: ${{ secrets.HMAC_SECRET }}
@@ -19,7 +19,7 @@ Securely call webhook endpoints from GitHub Actions with HMAC-SHA256 signature v
 
 ```yaml
 - name: Webhook
-  uses: onuminc/secure-actions-webhook@0.3.0
+  uses: onuminc/secure-actions-webhook@0.1.4
   with:
     url: https://example.com/webhook
     hmacSecret: ${{ secrets.HMAC_SECRET }}
@@ -31,7 +31,7 @@ Securely call webhook endpoints from GitHub Actions with HMAC-SHA256 signature v
 
 ```yaml
 - name: Webhook
-  uses: onuminc/secure-actions-webhook@0.3.0
+  uses: onuminc/secure-actions-webhook@0.1.4
   with:
     url: https://example.com/webhook
     hmacSecret: ${{ secrets.HMAC_SECRET }}
@@ -93,4 +93,3 @@ function verifySignature(secret, body, signature) {
 ## Credit
 
 Thanks to <https://github.com/koraykoska/secure-actions-webhook> for providing the base signature generation code.
-
