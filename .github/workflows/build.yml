@@ -23,10 +23,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
@@ -34,18 +33,18 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet dist/; then
+          if git diff --quiet dist/ package-lock.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit dist
+      - name: Commit changes
         if: steps.changes.outputs.changed == 'true' && github.event_name != 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dist/
+          git add dist/ package-lock.json
           git commit -m "Build dist"
           git push
 
